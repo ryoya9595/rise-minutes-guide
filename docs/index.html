@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RISE議事録メーカー 講師向けガイド</title>
+<meta name="description" content="YouTubeの面談録画URLを貼るだけで、議事録作成・議事録ドキュメントへの書き込み・顧客サマリー更新まで行うRISE講師用ツールの使い方。AIエージェント向けの案内手順つき。">
+<style>
+  :root { --navy:#1e3a5f; --blue:#1a56db; --pale:#eef4ff; --line:#d0d5dd; --text:#1a1a2e; --muted:#5b6475; --red:#b42318; --redbg:#fef3f2; --green:#067647; --greenbg:#e7f6ec; --yellowbg:#fffbeb; --yellowline:#fde68a; --bg:#f5f7fa; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Noto Sans JP", sans-serif; color: var(--text); background: var(--bg); line-height: 1.85; font-size: 16px; }
+  header { background: linear-gradient(135deg, #1a56db 0%, #1e3a5f 100%); color: #fff; padding: 40px 16px 32px; }
+  header .in, main { max-width: 820px; margin: 0 auto; }
+  header h1 { margin: 0 0 6px; font-size: 26px; line-height: 1.4; }
+  header p { margin: 0; opacity: .9; }
+  main { padding: 24px 16px 64px; }
+  section { background: #fff; border-radius: 14px; padding: 24px 22px; margin: 0 0 20px; box-shadow: 0 1px 4px rgba(0,0,0,.06); }
+  h2 { margin: 0 0 14px; font-size: 21px; color: var(--navy); border-bottom: 2px solid var(--blue); padding-bottom: 6px; }
+  h3 { margin: 22px 0 8px; font-size: 17px; color: var(--blue); }
+  p { margin: 8px 0; }
+  ol, ul { padding-left: 1.4em; margin: 8px 0; }
+  li { margin: 4px 0; }
+  .toc a { color: var(--blue); text-decoration: none; }
+  .toc ol { margin: 0; }
+  .box { border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+  .point { background: var(--yellowbg); border: 1px solid var(--yellowline); }
+  .warn { background: var(--redbg); color: var(--red); }
+  .ok { background: var(--greenbg); color: var(--green); }
+  .flow { background: var(--pale); border-radius: 10px; padding: 14px 16px; margin: 12px 0; }
+  .flow div { padding: 4px 0; }
+  .flow div + div::before { content: "↓"; display: block; color: var(--blue); font-weight: 700; }
+  .tbl { overflow-x: auto; margin: 12px 0; }
+  table { border-collapse: collapse; width: 100%; min-width: 520px; font-size: 15px; }
+  th, td { border: 1px solid var(--line); padding: 8px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--blue); color: #fff; font-weight: 700; }
+  td.lb { background: var(--pale); font-weight: 700; color: var(--navy); white-space: nowrap; }
+  code, .mono { font-family: "SF Mono", Menlo, Consolas, monospace; font-size: 14px; background: #f1f3f7; padding: 1px 6px; border-radius: 5px; }
+  pre { background: #0f172a; color: #e2e8f0; padding: 14px 16px; border-radius: 10px; overflow-x: auto; font-size: 14px; line-height: 1.7; white-space: pre-wrap; }
+  .tag { display: inline-block; font-size: 12px; font-weight: 700; border-radius: 999px; padding: 1px 10px; margin-right: 6px; vertical-align: 2px; }
+  .tag.need { background: var(--redbg); color: var(--red); }
+  .tag.once { background: var(--pale); color: var(--blue); }
+  footer { text-align: center; color: var(--muted); font-size: 13px; padding: 0 16px 40px; }
+  @media (max-width: 480px) { header h1 { font-size: 22px; } section { padding: 20px 16px; } body { font-size: 15px; } }
+</style>
+</head>
+<body>
+<header><div class="in">
+  <h1>RISE議事録メーカー 講師向けガイド</h1>
+  <p>YouTubeにアップした面談録画のURLを貼るだけで、議事録ができて、議事録ドキュメントに書き込まれます。</p>
+</div></header>
+
+<main>
+
+<section class="toc">
+  <h2>もくじ</h2>
+  <ol>
+    <li><a href="#what">このツールでできること</a></li>
+    <li><a href="#setup">はじめに1回だけやること</a></li>
+    <li><a href="#howto">毎回の使い方</a></li>
+    <li><a href="#auto">自動で入る仕組みと、自動で入るようにする方法</a></li>
+    <li><a href="#alert">赤い帯が出たときは</a></li>
+    <li><a href="#before">今までの方法との関係</a></li>
+    <li><a href="#faq">よくある質問</a></li>
+    <li><a href="#ai">AIエージェントに手伝ってもらう</a></li>
+  </ol>
+</section>
+
+<section id="what">
+  <h2>1. このツールでできること</h2>
+  <p>面談の録画をYouTubeに<b>限定公開</b>でアップしたら、そのURLをツールに貼って、ボタンを押すだけです。</p>
+  <div class="flow">
+    <div>YouTubeの自動字幕を読み込む</div>
+    <div>議事録を作る（今までの議事録と同じ形式・同じ見た目）</div>
+    <div>その受講生の議事録ドキュメントの「今回の回」に、録画URLと議事録を書き込む</div>
+    <div>顧客サマリーを最新の内容に更新する</div>
+    <div>議事録ログに記録し、YouTubeのタイトルを整える</div>
+  </div>
+  <p>面談日・受講生の名前・担当講師は、<b>Zoomの録画ファイルとLステップの予約から自動で入ります</b>。</p>
+  <div class="box point">🔗 ツールのURLは、運営から直接お伝えします（このページには載せていません）。</div>
+</section>
+
+<section id="setup">
+  <h2>2. はじめに1回だけやること</h2>
+
+  <h3><span class="tag once">1回だけ</span>2-1. ツールを開くGoogleアカウントを決める</h3>
+  <p>面談録画を<b>どのYouTubeチャンネルにアップしているか</b>で決まります。</p>
+  <div class="tbl"><table>
+    <tr><th>録画のアップ先</th><th>ツールを開くGoogleアカウント</th></tr>
+    <tr><td class="lb">自分のYouTubeチャンネル</td><td>そのチャンネルを持っているGoogleアカウント</td></tr>
+    <tr><td class="lb">運営が用意したチャンネル<br>（権限をもらってアップしている）</td><td>Lステップの予約とGoogleカレンダーを連携しているGoogleアカウント</td></tr>
+  </table></div>
+  <p>ブラウザに複数のGoogleアカウントでログインしていると「ファイルを開くことができません」と出ることがあります。そのときは<b>シークレットウィンドウ</b>で、使うアカウントだけでログインして開いてください。</p>
+
+  <h3><span class="tag once">1回だけ</span>2-2. 利用登録</h3>
+  <p>受講生の情報を扱うため、登録されたGoogleアカウントだけが使えます。</p>
+  <ul>
+    <li><b>Lステップと連携しているGoogleアカウント</b>は、最初から登録済みです</li>
+    <li>それ以外のアカウント（例：YouTube用に別のアカウントを使っている）で開く場合は、<b>そのメールアドレスを運営に伝えて</b>登録してもらってください</li>
+  </ul>
+
+  <h3><span class="tag once">1回だけ</span>2-3. 許可画面の進め方</h3>
+  <p>初めてツールを開くと、Googleの許可画面が出ます。</p>
+  <ol>
+    <li>「権限を確認（REVIEW PERMISSIONS）」を押す</li>
+    <li>2-1で決めたGoogleアカウントを選ぶ（チャンネルを選ぶ画面が出たら、面談録画をアップしているチャンネルを選ぶ）</li>
+    <li>「このアプリは Google で確認されていません」と出たら、左下の「詳細」→「（安全ではないページ）に移動」</li>
+    <li><b>「すべて選択」</b>にチェックを入れて「続行」</li>
+  </ol>
+  <div class="box point">ツールが使う権限は「YouTubeの字幕とタイトル」「Googleカレンダーの予約を見る」「外部サービス（議事録を作るAI）への接続」です。「すべて選択」をしないと、一部が自動で入らなくなります。</div>
+
+  <h3><span class="tag need">必要な人だけ</span>2-4. カレンダーの共有</h3>
+  <p><b>次の2つに両方あてはまる人だけ</b>やってください。</p>
+  <ul>
+    <li>面談録画を<b>自分のYouTubeチャンネル</b>にアップしている</li>
+    <li>そのYouTubeのGoogleアカウントが、<b>Lステップと連携しているGoogleアカウントと違う</b></li>
+  </ul>
+  <p>ツールで動画を読み込んだとき、クライアント名の下に「Lステップの予約カレンダーが、今のアカウントから見えません」と出たら、この作業が必要です。</p>
+  <ol>
+    <li><b>Lステップと連携しているGoogleアカウント</b>で、パソコンから <a href="https://calendar.google.com" target="_blank" rel="noopener">Googleカレンダー</a> を開く</li>
+    <li>左の「マイカレンダー」で、Lステップと連携しているカレンダー（ふつうは自分の名前のカレンダー）にマウスを乗せて「︙」→「<b>設定と共有</b>」</li>
+    <li>「<b>特定のユーザーまたはグループと共有する</b>」→「<b>ユーザーやグループを追加</b>」</li>
+    <li><b>自分のYouTube用Googleアカウントのメールアドレス</b>を入力（ほかの人のアドレスと間違えないように）</li>
+    <li>権限を「<b>予定の表示（すべての予定の詳細）</b>」にして「送信」</li>
+    <li>YouTube用アカウントのGmailに届くお知らせで「このカレンダーを追加」を押す</li>
+    <li>ツールで動画を読み込み、クライアント名の下に「Lステップの予約から自動で入れました」と出れば完了</li>
+  </ol>
+  <div class="box ok">共有先は<b>自分の別のアカウント</b>なので、ほかの講師や運営に予定が見えることはありません。Lステップの連携設定は変わらず、予約の受付にも影響しません。</div>
+</section>
+
+<section id="howto">
+  <h2>3. 毎回の使い方</h2>
+  <ol>
+    <li>Zoomは<b>クラウド録画</b>で録る</li>
+    <li>録画ファイルを、<b>ファイル名を変えずに</b>YouTubeへ<b>限定公開</b>でアップ（例：<span class="mono">GMT20260917-045541_Recording_1696x852.mp4</span>）</li>
+    <li>YouTubeの自動字幕ができるまで待つ（短い動画で数分、長い動画は30分〜数時間）</li>
+    <li>ツールに動画のURLを貼って「<b>読み込む</b>」</li>
+    <li>クライアント名・面談日・担当講師が入っているか確認（足りないものは画面が教えてくれます）</li>
+    <li>「<b>議事録を作って書き込む</b>」を押す（1〜2分）</li>
+    <li>画面の上に<b>緑の帯</b>が出たら完了。議事録ドキュメント・顧客サマリー・議事録ログのリンクが出ます</li>
+  </ol>
+  <div class="box point">💡 YouTubeのタイトルは自由です。名前が入っていなければ、書き込み後に「【RISE面談】〇〇様 Zoom録画 日付」へ自動で付け直します（「様」が入っているタイトルは変えません）。</div>
+</section>
+
+<section id="auto">
+  <h2>4. 自動で入る仕組みと、自動で入るようにする方法</h2>
+  <p>「入力が必要です」と出たときは、次の表で原因を確認してください。</p>
+  <div class="tbl"><table>
+    <tr><th>項目</th><th>自動で入る元（上から順に使う）</th><th>自動で入るようにするには</th></tr>
+    <tr><td class="lb">面談日</td><td>① Zoomの録画ファイル名<br>② YouTubeのタイトル・ファイル名の日付</td><td>録画ファイルの<b>名前を変えずに</b>アップする</td></tr>
+    <tr><td class="lb">クライアント名</td><td>① Lステップの予約（Googleカレンダー）<br>② YouTubeのタイトル・ファイル名の「〇〇様」<br>③ その日の予約から選ぶ</td><td>・録画ファイル名を変えない（予約の時刻と照らし合わせるため）<br>・2-1のアカウントで開く<br>・必要な人は2-4のカレンダー共有</td></tr>
+    <tr><td class="lb">担当講師</td><td>① Lステップの予約<br>② YouTubeのタイトル（「担当：〇〇」）<br>③ 前回この画面で選んだ講師</td><td>クライアント名と同じ</td></tr>
+  </table></div>
+  <div class="box warn">Lステップの予約で確認できなかった名前（タイトルや手入力）のときは、書き込む前に「〇〇様で合っていますか？」と確認が出ます。<b>前回の面談日も一緒に出る</b>ので、別の人になっていないか確かめてから押してください。</div>
+</section>
+
+<section id="alert">
+  <h2>5. 赤い帯が出たときは</h2>
+  <div class="tbl"><table>
+    <tr><th>表示</th><th>やること</th></tr>
+    <tr><td>このGoogleアカウントはまだ利用登録されていません</td><td>表示されたメールアドレスを運営に伝える（2-2）</td></tr>
+    <tr><td>字幕がまだできていません</td><td>時間をおいて、もう一度「読み込む」</td></tr>
+    <tr><td>この動画の字幕を読めませんでした</td><td>URLが正しいか確認。自分のチャンネルの動画なら、そのチャンネルのGoogleアカウントでツールを開き直す（2-1）</td></tr>
+    <tr><td>入力が必要です：〇〇</td><td>足りない項目を入れる。次回から自動で入るようにするなら4を確認</td></tr>
+    <tr><td>書き込む前に確認してください</td><td>名前と前回の面談日を見て、合っていれば「合っている。書き込む」、違えば「違う人を選ぶ」</td></tr>
+    <tr><td>同じ名前の顧客が複数います</td><td>書き込む人を選んで「書き込む」</td></tr>
+    <tr><td>サポート管理シートに見つかりませんでした</td><td>「名前で探し直す」に苗字などを入れて探す</td></tr>
+    <tr><td>議事録ドキュメントがまだありません</td><td>サポート管理シートで、その受講生の行を選んで「📋 面談準備」を1回押し、ツールの「書き込む」を押す</td></tr>
+    <tr><td>この録画は、すでに〇回目に書き込まれています</td><td>何もしなくてOK（二重に書き込まないように止めています）</td></tr>
+    <tr><td>一番上の回が空欄です。〇日ずれていますが、この回に書き込みますか？</td><td>「面談準備」で作った空の回が今回の面談ならOK、別の日の回ならキャンセル（新しい回として書き込まれます）</td></tr>
+  </table></div>
+  <p>表示の横の「確認する」を押すと、直す場所まで移動します。</p>
+</section>
+
+<section id="before">
+  <h2>6. 今までの方法との関係</h2>
+  <ul>
+    <li>今までの議事録ツール（文字起こしを貼る方式）と、サポート管理シートの「📋 面談準備」は、<b>これまでどおり使えます</b></li>
+    <li>先に「面談準備」で空の回を作っておいた場合、このツールはその空欄に書き込みます（回数はずれません）</li>
+    <li><b>同じ面談を、手で貼り付けたうえでこのツールでも書き込まないでください</b>（同じ録画URLがすでにあれば止まりますが、URLを貼っていない場合は二重になります）</li>
+    <li>顧客サマリーは、このツールで書き込んだ時点で更新されます。次の面談の前に最新のサマリーを読めます</li>
+  </ul>
+</section>
+
+<section id="faq">
+  <h2>7. よくある質問</h2>
+  <h3>Q. 限定公開のままで大丈夫？</h3>
+  <p>A. 大丈夫です。公開する必要はありません。</p>
+  <h3>Q. 議事録の中身がおかしいところがあった</h3>
+  <p>A. 議事録ドキュメントを直接直してください。AIが作るため、人名やツール名の聞き間違いが残ることがあります。</p>
+  <h3>Q. 間違った受講生に書き込んでしまった</h3>
+  <p>A. そのドキュメントの「ファイル」→「変更履歴」から元に戻せます。わからなければ運営に連絡してください。</p>
+  <h3>Q. スマホで使える？</h3>
+  <p>A. 画面は開けますが、許可画面やカレンダー共有の設定はパソコンがおすすめです。</p>
+</section>
+
+<section id="ai">
+  <h2>8. AIエージェントに手伝ってもらう</h2>
+  <p>Claude CodeなどのAIエージェントに、このページを読ませて案内してもらえます。次の文をそのまま渡してください。</p>
+<pre>このページを読んで、RISE議事録メーカーで「面談日・クライアント名・担当講師」が自動で入るように、設定を一緒に確認してください。
+https://ryoya9595.github.io/rise-minutes-guide/
+わからないことは私に質問して、1つずつ進めてください。パスワードは入力しないでください。</pre>
+
+  <h3>AIエージェント向けの案内手順</h3>
+  <p>（AIエージェントの方へ：以下の順に、利用者へ質問しながら案内してください。利用者のパスワードやAPIキーを扱ったり、代わりに入力したりしないでください。Googleの許可画面の「許可」ボタンは利用者本人に押してもらってください。）</p>
+  <ol>
+    <li><b>録画のアップ先を聞く</b>：「面談録画をアップしているのは、自分のYouTubeチャンネルですか？運営が用意したチャンネルですか？」</li>
+    <li><b>ツールを開くアカウントを決める</b>：自分のチャンネルなら、そのチャンネルのGoogleアカウント。運営のチャンネルなら、Lステップと連携しているGoogleアカウント（本ページ2-1）。</li>
+    <li><b>2つのアカウントが同じか確認する</b>：「Lステップの予約と連携しているGoogleアカウントのメールアドレス」と「ツールを開くアカウントのメールアドレス」を聞き、同じかどうかを確認する。</li>
+    <li><b>違う場合</b>：
+      <ol>
+        <li>ツールを開くアカウントが利用登録されているか確認する。「利用登録されていません」と出る場合は、表示されたアドレスを運営に伝えるよう案内する（2-2）。</li>
+        <li>自分のYouTubeチャンネルの場合は、本ページ2-4の手順で、Lステップ連携のカレンダーをツールを開くアカウントに「予定の表示（すべての予定の詳細）」で共有するよう、1ステップずつ案内する。</li>
+      </ol>
+    </li>
+    <li><b>録画ファイル名を確認する</b>：YouTubeにアップしたファイルが、Zoomの元の名前（GMTで始まる名前）のままか確認する。変えていた場合は、次回から変えずにアップするよう案内する（すでにアップ済みの動画は、その日の予約から選べば使える）。</li>
+    <li><b>動作確認</b>：ツールでアップ済みの動画のURLを読み込み、クライアント名の下に「Lステップの予約から自動で入れました」、面談日の下に「Zoomの録画ファイルから自動で入れました」と出るか確認してもらう。</li>
+    <li><b>それでも入らない場合</b>：その面談がLステップで予約されたものか（手動で入れた面談は予約がない）、面談の開始時刻と録画開始が大きくずれていないかを確認し、解決しなければ画面の表示内容を運営に伝えるよう案内する。</li>
+  </ol>
+</section>
+
+</main>
+<footer>RISE議事録メーカー 講師向けガイド ／ 内容は運営が更新します</footer>
+</body>
+</html>
