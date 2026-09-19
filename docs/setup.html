@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RISE議事録メーカー はじめの設定</title>
+<meta name="description" content="RISE議事録メーカーを使い始める前に、1回だけやる設定。自分がどれをやればいいかが分かれ道で判断できます。">
+<style>
+  :root { --navy:#1e3a5f; --blue:#1a56db; --pale:#eef4ff; --line:#d0d5dd; --text:#1a1a2e; --muted:#5b6475; --red:#b42318; --redbg:#fef3f2; --green:#067647; --greenbg:#e7f6ec; --yellowbg:#fffbeb; --yellowline:#fde68a; --bg:#f5f7fa; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Noto Sans JP", sans-serif; color: var(--text); background: var(--bg); line-height: 1.85; font-size: 16px; }
+  header { background: linear-gradient(135deg, #1a56db 0%, #1e3a5f 100%); color: #fff; padding: 36px 16px 30px; }
+  header .in, main { max-width: 800px; margin: 0 auto; }
+  header h1 { margin: 0 0 6px; font-size: 25px; line-height: 1.4; }
+  header p { margin: 0; opacity: .9; font-size: 15px; }
+  main { padding: 24px 16px 64px; }
+  section { background: #fff; border-radius: 14px; padding: 24px 22px; margin: 0 0 20px; box-shadow: 0 1px 4px rgba(0,0,0,.06); }
+  h2 { margin: 0 0 14px; font-size: 20px; color: var(--navy); border-bottom: 2px solid var(--blue); padding-bottom: 6px; }
+  h3 { margin: 20px 0 8px; font-size: 17px; color: var(--blue); }
+  p { margin: 8px 0; }
+  ol, ul { padding-left: 1.4em; margin: 8px 0; }
+  li { margin: 5px 0; }
+  .box { border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+  .point { background: var(--yellowbg); border: 1px solid var(--yellowline); }
+  .ok { background: var(--greenbg); color: var(--green); }
+  .warn { background: var(--redbg); color: var(--red); }
+  .q { background: var(--pale); border-radius: 12px; padding: 16px 18px; margin: 14px 0; }
+  .q b { color: var(--navy); }
+  .case { border: 2px solid var(--line); border-radius: 12px; padding: 16px 18px; margin: 14px 0; }
+  .case.a { border-color: #16a34a; }
+  .case.b { border-color: var(--blue); }
+  .case h3 { margin-top: 0; }
+  .case .who { font-size: 14px; color: var(--muted); margin: 0 0 8px; }
+  .steps { counter-reset: s; list-style: none; padding-left: 0; }
+  .steps li { counter-increment: s; position: relative; padding-left: 34px; margin: 10px 0; }
+  .steps li::before { content: counter(s); position: absolute; left: 0; top: 2px; width: 24px; height: 24px; border-radius: 50%; background: var(--blue); color: #fff; font-size: 13px; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+  .copy { background: #0f172a; color: #e2e8f0; padding: 14px 16px; border-radius: 10px; font-size: 14px; line-height: 1.8; white-space: pre-wrap; }
+  .mono { font-family: "SF Mono", Menlo, Consolas, monospace; font-size: 14px; background: #f1f3f7; padding: 1px 6px; border-radius: 5px; }
+  .check { list-style: none; padding-left: 0; }
+  .check li { padding-left: 26px; position: relative; }
+  .check li::before { content: "☐"; position: absolute; left: 0; font-size: 18px; color: var(--blue); }
+  a { color: var(--blue); }
+  footer { text-align: center; color: var(--muted); font-size: 13px; padding: 0 16px 40px; }
+  @media (max-width: 480px) { header h1 { font-size: 21px; } section { padding: 20px 16px; } body { font-size: 15px; } }
+</style>
+</head>
+<body>
+<header><div class="in">
+  <h1>RISE議事録メーカー はじめの設定</h1>
+  <p>使い始める前に、1回だけやることだけをまとめました。全部で5〜10分です。</p>
+</div></header>
+
+<main>
+
+<section>
+  <h2>まず、自分がどれに当てはまるか</h2>
+  <div class="q">
+    <p><b>質問1：面談の録画は、どのYouTubeチャンネルにアップしていますか？</b></p>
+    <ul>
+      <li><b>運営が用意したチャンネル</b>（RISE管理用など、権限をもらってアップしている）→ <a href="#caseA">パターンA</a></li>
+      <li><b>自分のYouTubeチャンネル</b> → 質問2へ</li>
+    </ul>
+    <p><b>質問2：そのYouTubeのGoogleアカウントは、Lステップの予約と連携しているGoogleアカウントと同じですか？</b></p>
+    <ul>
+      <li><b>同じ</b> → <a href="#caseA">パターンA</a></li>
+      <li><b>違う</b>（または分からない）→ <a href="#caseB">パターンB</a></li>
+    </ul>
+  </div>
+  <div class="box point">「Lステップと連携しているアカウント」＝ 自分の面談予約が入ると、予定が自動で入るGoogleカレンダーのアカウントです。分からないときは運営に聞いてください。</div>
+</section>
+
+<section class="case a" id="caseA">
+  <h3>パターンA：許可するだけ（3分）</h3>
+  <p class="who">運営のチャンネルにアップしている人／自分のチャンネルで、YouTubeとLステップ連携が同じアカウントの人</p>
+  <ol class="steps">
+    <li>運営から届いた<b>ツールのURL</b>を開く（パソコン推奨）</li>
+    <li>開くときのGoogleアカウントは<b>Lステップと連携しているアカウント</b>（運営のチャンネルにアップしている人）、または<b>自分のチャンネルのアカウント</b></li>
+    <li>「権限を確認（REVIEW PERMISSIONS）」→ アカウントを選ぶ → 「詳細」→「（安全ではないページ）に移動」</li>
+    <li><b>「すべて選択」にチェック</b>を入れて「続行」</li>
+    <li>動画のURLを1本読み込んでみて、<b>クライアント名の下に「Lステップの予約から自動で入れました」</b>と出れば完了</li>
+  </ol>
+  <div class="box warn">「すべて選択」を押さないと、名前や面談日が自動で入りません。チェックが1つでも外れていたら戻ってやり直してください。</div>
+</section>
+
+<section class="case b" id="caseB">
+  <h3>パターンB：許可＋2つの連絡・設定（10分）</h3>
+  <p class="who">自分のチャンネルにアップしていて、YouTubeのアカウントとLステップ連携のアカウントが違う人</p>
+
+  <h3>B-1. 使うアカウントを運営に伝える</h3>
+  <p>受講生の情報を扱うため、登録されたアカウントだけが使えます。次の文をコピーして運営に送ってください。</p>
+  <div class="copy">RISE議事録メーカーの利用登録をお願いします。
+・講師名：
+・ツールを開くGoogleアカウント（YouTubeに面談をアップしているアカウント）：
+・Lステップの予約と連携しているGoogleアカウント：</div>
+
+  <h3>B-2. カレンダーを、自分のYouTube用アカウントに共有する</h3>
+  <p>これをやると、受講生の名前と担当講師が自動で入ります。共有先は<b>自分のもう1つのアカウント</b>なので、他の講師や運営に予定が見えることはありません。</p>
+  <ol class="steps">
+    <li><b>Lステップと連携しているアカウント</b>でパソコンから <a href="https://calendar.google.com" target="_blank" rel="noopener">Googleカレンダー</a> を開く</li>
+    <li>左の「マイカレンダー」で、予約が入るカレンダー（ふつうは自分の名前のカレンダー）にマウスを乗せて「︙」→「<b>設定と共有</b>」</li>
+    <li>「<b>特定のユーザーまたはグループと共有する</b>」→「<b>ユーザーやグループを追加</b>」</li>
+    <li><b>自分のYouTube用Googleアカウントのアドレス</b>を入力（他の人のアドレスと間違えないように）</li>
+    <li>権限を「<b>予定の表示（すべての予定の詳細）</b>」にして「送信」</li>
+    <li>YouTube用アカウントのGmailに届くお知らせで「<b>このカレンダーを追加</b>」を押す</li>
+  </ol>
+  <div class="box point">Lステップの設定は何も変わりません。予約の受付にも影響しません。</div>
+
+  <h3>B-3. ツールを開いて許可する</h3>
+  <ol class="steps">
+    <li>運営から届いたツールのURLを、<b>YouTube用アカウント</b>で開く</li>
+    <li>「権限を確認」→ アカウントを選ぶ →「詳細」→「（安全ではないページ）に移動」</li>
+    <li><b>「すべて選択」</b>にチェックを入れて「続行」</li>
+    <li>動画のURLを1本読み込んで、<b>「Lステップの予約から自動で入れました」</b>と出れば完了</li>
+  </ol>
+</section>
+
+<section>
+  <h2>つまずきやすいところ</h2>
+  <ul>
+    <li><b>「現在、ファイルを開くことができません」と出る</b><br>ブラウザに複数のGoogleアカウントでログインしているときに出ます。<b>シークレットウィンドウ</b>を開いて、使うアカウントだけでログインしてからツールのURLを開いてください。</li>
+    <li><b>「このGoogleアカウントはまだ利用登録されていません」と出る</b><br>画面に出ているアドレスを運営に伝えてください（B-1の文が使えます）。</li>
+    <li><b>クライアント名の下に「カレンダーが見えません」と出る</b><br>B-2のカレンダー共有がまだです。共有してから、もう一度「読み込む」を押してください。</li>
+    <li><b>チャンネルを選ぶ画面が出た</b><br>面談録画をアップしているチャンネルを選んでください。</li>
+  </ul>
+</section>
+
+<section>
+  <h2>設定できたか、最後のチェック</h2>
+  <ul class="check">
+    <li>ツールのURLを開いて、エラーが出ずに画面が表示される</li>
+    <li>面談録画のURLを貼って「読み込む」を押すと「字幕あり」と出る</li>
+    <li>クライアント名の下に「Lステップの予約から自動で入れました」と出る</li>
+    <li>面談日の下に「Zoomの録画ファイルから自動で入れました」と出る</li>
+    <li>担当講師に自分の名前が入っている</li>
+  </ul>
+  <div class="box ok">5つそろえば設定は完了です。あとは毎回、URLを貼って「議事録を作って書き込む」を押すだけになります。</div>
+  <p>※ 面談日が「⚠️ 面談日を入れてください」になる場合は、Zoomの録画ファイルの名前を変えてアップしています。次回から<b>ファイル名を変えずに</b>アップすると自動で入ります。</p>
+  <p>使い方の詳細は <a href="./">講師向けガイド</a> を見てください。</p>
+</section>
+
+<section>
+  <h2>AIエージェントに手伝ってもらう</h2>
+  <p>設定でつまずいたら、Claude CodeなどのAIエージェントに次の文を渡してください。</p>
+  <div class="copy">このページを読んで、RISE議事録メーカーの初期設定を一緒に進めてください。
+https://ryoya9595.github.io/rise-minutes-guide/setup.html
+私がどのパターンに当てはまるかを質問で確かめてから、1ステップずつ案内してください。
+パスワードは扱わないでください。Googleの許可ボタンは私が押します。</div>
+  <p>（AIエージェントの方へ：まず「録画のアップ先」と「2つのGoogleアカウントが同じか」を質問して、パターンAかBかを判定してください。Bの場合は B-1 の連絡文を用意し、B-2 のカレンダー共有を1ステップずつ案内し、最後に「設定できたか、最後のチェック」の5項目を一緒に確認してください。利用者のパスワードやAPIキーを扱わず、許可ボタンは本人に押してもらってください。）</p>
+</section>
+
+</main>
+<footer>RISE議事録メーカー はじめの設定 ／ 内容は運営が更新します</footer>
+</body>
+</html>
