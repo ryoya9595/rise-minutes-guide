@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RISE議事録メーカー プライバシーポリシー</title>
+<meta name="description" content="RISE議事録メーカーが取得する情報とその使いみち、保存と削除について。">
+<style>
+  :root { --navy:#1e3a5f; --blue:#1a56db; --pale:#eef4ff; --line:#d0d5dd; --text:#1a1a2e; --muted:#5b6475; --red:#b42318; --redbg:#fef3f2; --green:#067647; --greenbg:#e7f6ec; --yellowbg:#fffbeb; --yellowline:#fde68a; --bg:#f5f7fa; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Noto Sans JP", sans-serif; color: var(--text); background: var(--bg); line-height: 1.85; font-size: 16px; }
+  header { background: linear-gradient(135deg, #1a56db 0%, #1e3a5f 100%); color: #fff; padding: 36px 16px 30px; }
+  header .in, main { max-width: 800px; margin: 0 auto; }
+  header h1 { margin: 0 0 6px; font-size: 25px; line-height: 1.4; }
+  header p { margin: 0; opacity: .9; font-size: 15px; }
+  main { padding: 24px 16px 64px; }
+  section { background: #fff; border-radius: 14px; padding: 24px 22px; margin: 0 0 20px; box-shadow: 0 1px 4px rgba(0,0,0,.06); }
+  h2 { margin: 0 0 14px; font-size: 20px; color: var(--navy); border-bottom: 2px solid var(--blue); padding-bottom: 6px; }
+  h3 { margin: 20px 0 8px; font-size: 17px; color: var(--blue); }
+  p { margin: 8px 0; }
+  ol, ul { padding-left: 1.4em; margin: 8px 0; }
+  li { margin: 5px 0; }
+  .box { border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+  .point { background: var(--yellowbg); border: 1px solid var(--yellowline); }
+  .ok { background: var(--greenbg); color: var(--green); }
+  .warn { background: var(--redbg); color: var(--red); }
+  .q { background: var(--pale); border-radius: 12px; padding: 16px 18px; margin: 14px 0; }
+  .q b { color: var(--navy); }
+  .case { border: 2px solid var(--line); border-radius: 12px; padding: 16px 18px; margin: 14px 0; }
+  .case.a { border-color: #16a34a; }
+  .case.b { border-color: var(--blue); }
+  .case h3 { margin-top: 0; }
+  .case .who { font-size: 14px; color: var(--muted); margin: 0 0 8px; }
+  .steps { counter-reset: s; list-style: none; padding-left: 0; }
+  .steps li { counter-increment: s; position: relative; padding-left: 34px; margin: 10px 0; }
+  .steps li::before { content: counter(s); position: absolute; left: 0; top: 2px; width: 24px; height: 24px; border-radius: 50%; background: var(--blue); color: #fff; font-size: 13px; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+  .copy { background: #0f172a; color: #e2e8f0; padding: 14px 16px; border-radius: 10px; font-size: 14px; line-height: 1.8; white-space: pre-wrap; }
+  .mono { font-family: "SF Mono", Menlo, Consolas, monospace; font-size: 14px; background: #f1f3f7; padding: 1px 6px; border-radius: 5px; }
+  .check { list-style: none; padding-left: 0; }
+  .check li { padding-left: 26px; position: relative; }
+  .check li::before { content: "☐"; position: absolute; left: 0; font-size: 18px; color: var(--blue); }
+  a { color: var(--blue); }
+  footer { text-align: center; color: var(--muted); font-size: 13px; padding: 0 16px 40px; }
+  @media (max-width: 480px) { header h1 { font-size: 21px; } section { padding: 20px 16px; } body { font-size: 15px; } }
+</style>
+</head>
+<body>
+<header><div class="in">
+  <h1>RISE議事録メーカー プライバシーポリシー</h1>
+  <p>最終更新：2026年9月23日</p>
+</div></header>
+<main>
+<section>
+  <h2>このポリシーについて</h2>
+  <p>「RISE議事録メーカー」（以下「本ツール」）は、RISE（ラッキーマインAIスクール）の講師が、面談の録画から議事録を作るための運営向けツールです。本ツールがどの情報をどう扱うかを、このページで説明します。</p>
+  <p>運営者：RISE運営事務局（株式会社ECHOOZ）／連絡先：ryoyatennis95s@gmail.com</p>
+</section>
+<section>
+  <h2>本ツールが取得する情報</h2>
+  <p>本ツールは、利用者（講師）がGoogleアカウントで許可した範囲で、次の情報にアクセスします。</p>
+  <ul>
+    <li><b>YouTube</b>（スコープ：<span class="mono">https://www.googleapis.com/auth/youtube.force-ssl</span>）<br>利用者自身がアップロードした面談録画について、動画のタイトル・アップロード時のファイル名・自動字幕（文字起こし）を読み取ります。また、議事録の作成後に、その動画のタイトルを「【RISE面談】〇〇様 日付 講師名」の形式に変更します。利用者の動画を公開したり、削除したり、他の動画を操作したりすることはありません。</li>
+    <li><b>Googleカレンダー（読み取りのみ）</b><br>Lステップから連携された面談予約を読み取り、受講生の名前と担当講師を自動で入力するために使います。予定の作成・変更はしません。</li>
+    <li><b>Googleアカウントのメールアドレス</b><br>利用登録済みの講師かどうかを確認するために使います。</li>
+  </ul>
+</section>
+<section>
+  <h2>情報の使いみち</h2>
+  <ul>
+    <li>読み取った字幕（文字起こし）は、議事録を生成するためにGoogleの生成AI（Gemini API）へ送信します。生成された議事録は、RISE運営が管理するGoogleドキュメント（受講生ごとの議事録・顧客サマリー）と運営用の記録シートに保存されます。</li>
+    <li>YouTubeの認証情報（アクセストークン・リフレッシュトークン）は、利用者本人のGoogleアカウントに紐づくApps Scriptのユーザープロパティに保存され、他の利用者や運営から参照されることはありません。</li>
+    <li>取得した情報を広告目的で使うこと、第三者へ販売・提供することはありません。</li>
+  </ul>
+  <p>本ツールによるGoogle APIから受け取った情報の使用および他のアプリへの転送は、<a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener">Google API サービスのユーザーデータに関するポリシー</a>（限定使用の要件を含む）に準拠します。</p>
+</section>
+<section>
+  <h2>保存期間と削除</h2>
+  <ul>
+    <li>YouTubeの認証情報は、利用者がツール内の「YouTubeチャンネル連携」で「外す」を押すか、<a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">Googleアカウントの「サードパーティ製のアプリとサービス」</a>から本ツールのアクセス権を削除した時点で無効になります。</li>
+    <li>字幕（文字起こし）は議事録の生成にのみ使い、本ツール側には保存しません。</li>
+    <li>生成した議事録は、RISEの受講生サポートのために運営が保管します。削除のご希望は上記の連絡先までお知らせください。</li>
+  </ul>
+</section>
+<section>
+  <h2>変更について</h2>
+  <p>本ポリシーを変更する場合は、このページで公開します。</p>
+</section>
+</main>
+<footer><a href="index.html">RISE議事録メーカー 講師向けガイド</a> ／ <a href="privacy.html">プライバシーポリシー</a> ／ <a href="terms.html">利用規約</a></footer>
+</body>
+</html>
